@@ -1,7 +1,7 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def handler():
-    return 'Hello, World!'
+    return render_template("index.html")
