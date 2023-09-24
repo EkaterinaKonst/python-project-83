@@ -22,3 +22,6 @@ package-install:
 
 package-reinstall:
 	python3 -m pip install --user dist/*.whl --force-reinstall
+
+install:
+	poetry install
