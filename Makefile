@@ -11,7 +11,7 @@ test-coverage:
 lint:
 	poetry run flake8 page_analyzer
 
-build:
+build-app:
 	poetry build
 
 publish:
@@ -25,3 +25,6 @@ package-reinstall:
 
 install:
 	poetry install
+
+build:
+	./build.sh
