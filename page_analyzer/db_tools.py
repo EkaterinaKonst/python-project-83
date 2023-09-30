@@ -77,13 +77,8 @@ def get_url_data(url: str) -> dict:
 
     return check
 
-def get_all_urls() -> dict:
-    """
-    Query the database for all added URLs. Return only the last check info.
 
-    Tables: urls, url_checks
-    :return: Dict of all urls, its id's, last check dates and status codes.
-    """
+def get_all_urls() -> dict:
 
     conn = connect(DATABASE_URL)
     with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -192,13 +187,6 @@ def add_site(site: dict) -> None:
 
 
 def add_check(check: dict) -> None:
-    """
-    Insert into database new check data.
-
-    Tables: url_checks
-    :param check: Dict containing url check data: URL id, check status code, h1,
-    title, description, check date
-    """
 
     conn = connect(DATABASE_URL)
     with conn.cursor() as cur:

@@ -12,14 +12,16 @@ from datetime import datetime
 import requests
 
 
-from page_analyzer.db_tools import (get_all_urls,
-                              get_urls_by_id,
-                              get_urls_by_name,
-                              get_checks_by_id,
-                              add_check,
-                              add_site,
-                              validate_url,
-                              get_url_data)
+from page_analyzer.db_tools import (
+    get_all_urls,
+    get_urls_by_id,
+    get_urls_by_name,
+    get_checks_by_id,
+    add_check,
+    add_site,
+    validate_url,
+    get_url_data
+)
 
 
 load_dotenv()
