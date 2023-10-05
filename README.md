@@ -2,7 +2,7 @@
 [Domen link](python-project-83-production-fa75.up.railway.app)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/4e96e70caeee80d527a6/maintainability)](https://codeclimate.com/github/EkaterinaKonst/python-project-83/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/4e96e70caeee80d527a6/test_coverage)](https://codeclimate.com/github/EkaterinaKonst/python-project-83/test_coverage)
+
 [![Build and Deploy](https://github.com/EkaterinaKonst/python-project-83/actions/workflows/github-actions-demo.yml//badge.svg)](https://github.com/EkaterinaKonst/python-project-83/actions/workflows/github-actions-demo.yml//badge.svg)
 
 

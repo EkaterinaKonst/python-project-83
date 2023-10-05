@@ -18,7 +18,11 @@ from page_analyzer.db_tools import (
     get_urls_by_name,
     get_checks_by_id,
     add_check,
-    add_site,
+    add_site
+)
+
+
+from page_analyzer.urls import (
     validate_url,
     get_url_data
 )
