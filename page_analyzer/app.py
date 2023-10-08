@@ -32,6 +32,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 
 @app.errorhandler(404)
@@ -136,7 +137,7 @@ def urls_post():
         ))
 
 
-@app.route('/urls/<int:id_>')
+@app.get('/urls/<int:id_>')
 def url_show(id_):
     """
     Render one URL page containing its parsed check data.
@@ -158,12 +159,12 @@ def url_show(id_):
         )
     except IndexError:
         return render_template(
-            '404.html'
+            'page404.html'
         ), 404
 
 
 @app.post('/urls/<int:id_>/checks')
-def url_check(id_):
+def url_checks(id_):
     """
     Check requested URL. Add data to db or raise error.
 
