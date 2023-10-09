@@ -103,7 +103,7 @@ def urls_post():
             flash('Страница уже существует', 'alert-info')
             return redirect(url_for(
                 'url_show',
-                id_=id_
+                id=id
             ))
         else:
             flash('Некорректный URL', 'alert-danger')
@@ -133,12 +133,12 @@ def urls_post():
         flash('Страница успешно добавлена', 'alert-success')
         return redirect(url_for(
             'url_show',
-            id_=id_
+            id=id
         ))
 
 
-@app.get('/urls/<int:id_>')
-def url_show(id_):
+@app.get('/urls/<int:id>')
+def url_show(id):
     """
     Render one URL page containing its parsed check data.
 
@@ -147,8 +147,8 @@ def url_show(id_):
     """
 
     try:
-        url = get_urls_by_id(id_)
-        checks = get_checks_by_id(id_)
+        url = get_urls_by_id(id)
+        checks = get_checks_by_id(id)
 
         messages = get_flashed_messages(with_categories=True)
         return render_template(
@@ -163,8 +163,8 @@ def url_show(id_):
         ), 404
 
 
-@app.post('/urls/<int:id_>/checks')
-def url_checks(id_):
+@app.post('/urls/<int:id>/checks')
+def url_checks(id):
     """
     Check requested URL. Add data to db or raise error.
 
@@ -173,12 +173,12 @@ def url_checks(id_):
     error if an error occured during check.
     """
 
-    url = get_urls_by_id(id_)['name']
+    url = get_urls_by_id(id)['name']
 
     try:
         check = get_url_data(url)
 
-        check['url_id'] = id_
+        check['url_id'] = id
         check['checked_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         add_check(check)
@@ -190,7 +190,7 @@ def url_checks(id_):
 
     return redirect(url_for(
         'url_show',
-        id_=id_
+        id=id
     ))
 
 
