@@ -128,7 +128,7 @@ def urls_post():
 
         add_site(site)
 
-        id_ = get_urls_by_name(url)['id']
+        id = get_urls_by_name(url)['id']
 
         flash('Страница успешно добавлена', 'alert-success')
         return redirect(url_for(
