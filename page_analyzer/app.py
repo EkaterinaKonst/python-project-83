@@ -98,7 +98,7 @@ def urls_post():
     if error:
         if error == 'exists':
 
-            id_ = get_urls_by_name(url)['id']
+            id = get_urls_by_name(url)['id']
 
             flash('Страница уже существует', 'alert-info')
             return redirect(url_for(
