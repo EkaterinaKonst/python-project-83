@@ -92,49 +92,27 @@ def urls_post():
     url = request.form.get('url')
     check = validate_url(url)
 
+    if check:
+        for c in check:
+            flash(c, 'alert-danger')
+        messages = get_flashed_messages(with_categories=True)
+        return render_template(
+            'index.html',
+            url=url,
+            messages=messages
+        ), 422
+
     url = check['url']
-    error = check['error']
-
-    if error:
-        if error == 'exists':
-
-            id = get_urls_by_name(url)['id']
-
-            flash('Страница уже существует', 'alert-info')
-            return redirect(url_for(
-                'show',
-                id=id
-            ))
-        else:
-            flash('Некорректный URL', 'alert-danger')
-
-            if error == 'zero':
-                flash('URL обязателен', 'alert-danger')
-            elif error == 'length':
-                flash('URL превышает 255 символов', 'alert-danger')
-
-            messages = get_flashed_messages(with_categories=True)
-            return render_template(
-                'index.html',
-                url=url,
-                messages=messages
-            ), 422
-
+    current_url = get_urls_by_id(url)
+    if current_url:
+        flash('Страница уже существует', 'alert-info')
+        url_id = current_url.id
     else:
-        site = {
-            'url': url,
-            'created_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        }
-
-        add_site(site)
-
-        id = get_urls_by_name(url)['id']
-
+        add_site(url)
+        current_url = get_urls_by_id(url)
+        url_id = current_url.id
         flash('Страница успешно добавлена', 'alert-success')
-        return redirect(url_for(
-            'show',
-            id=id
-        ))
+    return redirect(url_for('show', id=url_id)), 301
 
 
 @app.get('/urls/<int:id>')
