@@ -102,7 +102,7 @@ def urls_post():
 
             flash('Страница уже существует', 'alert-info')
             return redirect(url_for(
-                'url_show',
+                'show',
                 id=id
             ))
         else:
@@ -132,7 +132,7 @@ def urls_post():
 
         flash('Страница успешно добавлена', 'alert-success')
         return redirect(url_for(
-            'url_show',
+            'show',
             id=id
         ))
 
@@ -142,7 +142,7 @@ def url_show(id):
     """
     Render one URL page containing its parsed check data.
 
-    :param id_: URL id.
+    :param id: URL id.
     :return: Render page or raise 404 error.
     """
 
@@ -189,7 +189,7 @@ def url_checks(id):
         flash('Произошла ошибка при проверке', 'alert-danger')
 
     return redirect(url_for(
-        'url_show',
+        'show',
         id=id
     ))
 
